@@ -1,6 +1,6 @@
 ---
 name: "Tamakloe Website"
-output_dir: html
+output_dir: docs
 navbar:
   title: "Vince Tamakloe"
   left:
