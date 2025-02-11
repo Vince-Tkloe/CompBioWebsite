@@ -1,8 +1,8 @@
 ---
-name: "Tamakloe Website"
+name: "Vincent Tamakloe"
 output_dir: docs
 navbar:
-  title: "Vince Tamakloe"
+  title: "Tamakloe Website"
   left:
     - text: "Home"
       href: index.html
@@ -19,6 +19,6 @@ output:
 
 **Welcome to My Website!**
 
-Hi there! I’m Vincent Tamakloe, a PhD student in Plant Sciences with a concentration in Applied Chemical Ecology at the University of Vermont. My research focuses on sustainable pest management, particularly exploring pheromone mating disruption in the swede midge (*Contarinia nasturtii*), and I'm passionate about agroecology, plant-insect interactions, chemical ecology, insecticides and pest management.
+Hi there! 
 
 This site is still under construction, but I’m excited to share my research journey, insights, and updates as I go. So sit back, relax, and enjoy the ride! Stay tuned for new content and feel free to check back regularly as the site evolves.
