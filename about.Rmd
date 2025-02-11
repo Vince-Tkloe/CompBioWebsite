@@ -1,11 +1,7 @@
 ---
-title: "about"
-author: "Vincent Tamakloe"
-date: "`r Sys.Date()`"
+title: "About"
 output: html_document
 ---
-
-**About**
 
 I am Vincent Tamakloe, a PhD student in Plant Sciences with a concentration in Applied Chemical Ecology at the University of Vermont. My research focuses on sustainable pest management, particularly exploring pheromone mating disruption in the swede midge (*Contarinia nasturtii*), and I'm passionate about agroecology, plant-insect interactions, chemical ecology, insecticides and pest management.
 

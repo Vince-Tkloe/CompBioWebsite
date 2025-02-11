@@ -1,7 +1,5 @@
 ---
-title: "HomeWorks"
-author: "Vincent Tamakloe"
-date: "`r Sys.Date()`"
+title: "Home Works"
 output: html_document
 ---
 

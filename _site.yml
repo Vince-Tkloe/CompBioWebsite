@@ -1,7 +1,7 @@
 ---
 title: "CompBioWebsite"
 name: "Vincent Tamakloe"
-output_dir: docs
+output_dir: html
 navbar:
   title: "Tamakloe Website"
   left:
