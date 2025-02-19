@@ -3,10 +3,6 @@ title: "Home Works"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 #HomeWork_3
 
 [HomeWork_3](HomeWork_3.html)

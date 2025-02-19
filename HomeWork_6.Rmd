@@ -1,0 +1,110 @@
+---
+title: "HomeWork 6"
+author: "Vincent Tamakloe"
+date: "2025-02-19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Generating Simulated Data Sets To Explore Hypotheses
+
+### Introduction
+For this assignment, I will simulate a dataset based on an experimental hypothesis related to insect pheromone communication in agricultural pest management. Specifically, I will explore how different pheromone concentrations affect swede midge (*Contarinia nasturtii*) mating behavior. I assume that mating frequency follows a normal distribution across treatment groups.
+
+### Hypothesis
+I hypothesize that increased pheromone concentration leads to a significant reduction in mating frequency. To test this, I will simulate four treatment groups, including a control:  
+-*Control group*: Expected baseline mating frequency  
+-*Low pheromone*: Expected high mating frequency  
+-*Medium pheromone*: Intermediate mating frequency  
+-*High pheromone*: Low mating frequency  
+
+Assumed parameters:  
+- *Sample size per group* = 30  
+- *Means:* *Control* = 20, *Low* = 15, *Medium* = 10, *High* = 5  
+- *Standard deviation*: 3 for all treatment groups  
+
+### Data Simulation
+```{r}
+set.seed(123)  # Ensure reproducibility
+
+# Define sample sizes, means, and standard deviations
+sample_size <- 30
+treatments <- c("Control", "Low", "Medium", "High")
+means <- c(20, 15, 10, 5)
+sd <- 3
+
+# Generate random data from normal distributions
+data <- data.frame(
+  Treatment = rep(treatments, each = sample_size),
+  MatingFrequency = c(
+    rnorm(sample_size, mean = means[1], sd = sd),
+    rnorm(sample_size, mean = means[2], sd = sd),
+    rnorm(sample_size, mean = means[3], sd = sd),
+    rnorm(sample_size, mean = means[4], sd = sd)
+  )
+)
+
+head(data)
+```
+
+### Data Visualization
+```{r}
+library(ggplot2)
+
+ggplot(data, aes(x = Treatment, y = MatingFrequency, fill = Treatment)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "Effect of Pheromone Concentration on Mating Frequency",
+       x = "Pheromone Treatment",
+       y = "Mating Frequency")
+```
+
+### ANOVA Analysis
+```{r}
+# Perform ANOVA to test for significant differences
+anova_model <- aov(MatingFrequency ~ Treatment, data = data)
+summary(anova_model)
+```
+
+### Sample Size Effects
+```{r}
+# Function to test different sample sizes
+test_sample_sizes <- function(sample_sizes) {
+  results <- data.frame(SampleSize = numeric(), p_value = numeric())
+  
+  for (n in sample_sizes) {
+    new_data <- data.frame(
+      Treatment = rep(treatments, each = n),
+      MatingFrequency = c(
+        rnorm(n, mean = means[1], sd = sd),  # Control group
+        rnorm(n, mean = means[2], sd = sd),  # Low pheromone
+        rnorm(n, mean = means[3], sd = sd),  # Medium pheromone
+        rnorm(n, mean = means[4], sd = sd)   # High pheromone
+      )
+    )
+    
+    model <- aov(MatingFrequency ~ Treatment, data = new_data)
+    p_val <- summary(model)[[1]][["Pr(>F)"]][1]
+    
+    results <- rbind(results, data.frame(SampleSize = n, p_value = p_val))
+  }
+  
+  return(results)
+}
+
+# Test sample sizes from 10 to 100 in increments of 10
+sample_sizes <- seq(10, 100, by = 10)
+sample_size_results <- test_sample_sizes(sample_sizes)
+
+print(sample_size_results)
+```
+
+### Conclusion
+This study highlights the impact of pheromone concentration on swede midge mating behavior and the role of sample size in detecting statistically significant differences. The results demonstrate that higher pheromone concentrations reduce mating frequency, supporting the hypothesis. 
+
+Additionally, the analysis reveals how sample size affects statistical power. Smaller sample sizes lead to higher variability in results, making it difficult to detect significant differences, while larger sample sizes improve reliability and consistency. Future studies could explore alternative statistical models, such as negative binomial regression, to account for potential overdispersion in count data. 
+
+Overall, this simulation provides valuable insights into experimental design and the importance of robust statistical analysis in ecological research.
