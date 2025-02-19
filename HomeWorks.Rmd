@@ -10,3 +10,11 @@ output: html_document
 #HomeWork_4
 
 [HomeWork_4](HomeWork_4.html)
+
+#HomeWork_5
+
+[HomeWork_5](HomeWork_5.html)
+
+#HomeWork_6
+
+[HomeWork_6](HomeWork_6.html)
