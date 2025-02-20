@@ -13,7 +13,7 @@ navbar:
       href: HomeWorks.html
 output:
   html_document:
-    theme: cerulean
+    theme: flatly
     highlight: tango
 ---
 
