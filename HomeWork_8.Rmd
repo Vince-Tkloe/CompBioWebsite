@@ -1,0 +1,122 @@
+---
+title: "HomeWork_8"
+author: "Vincent Tamakloe"
+date: "2025-02-27"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+#### Load required libraries
+```{r}
+library(tidyverse)
+```
+
+#### Load the iris dataset
+```{r}
+data(iris) 
+```
+
+
+
+#### Question 1. Examine the structure of the iris dataset
+```{r}
+glimpse(iris) 
+```
+
+
+
+#### Question 2. Create iris1: Filter for species Virginica and Versicolor with Sepal.Length > 6 and Sepal.Width > 2.5
+```{r}
+iris1 <- iris %>%
+  filter(Species %in% c("virginica", "versicolor"),
+         Sepal.Length > 6,
+         Sepal.Width > 2.5)
+
+glimpse(iris1)
+```
+
+
+
+#### Question 3. Create iris2: Select only Species, Sepal.Length, and Sepal.Width
+```{r}
+iris2 <- iris1 %>%
+  select(Species, Sepal.Length, Sepal.Width)
+
+glimpse(iris2)
+```
+
+
+
+#### Question 4. Create iris3: Arrange by Sepal.Length in descending order
+```{r}
+iris3 <- iris2 %>%
+  arrange(desc(Sepal.Length))
+
+head(iris3)
+```
+
+
+
+#### Question 5. Create iris4: Add a column for Sepal.Area (Sepal.Length * Sepal.Width)
+```{r}
+iris4 <- iris3 %>%
+  mutate(Sepal.Area = Sepal.Length * Sepal.Width)
+
+glimpse(iris4)
+```
+
+
+
+#### Question 6. Create iris5: Compute overall mean Sepal.Length, mean Sepal.Width, and sample size
+```{r}
+iris5 <- iris4 %>%
+  summarise(Avg.Sepal.Length = mean(Sepal.Length),
+            Avg.Sepal.Width = mean(Sepal.Width),
+            Sample.Size = n())
+
+print(iris5)
+```
+
+
+
+#### Question 7. Create iris6: Compute mean Sepal.Length, mean Sepal.Width, and sample size grouped by Species
+```{r}
+iris6 <- iris4 %>%
+  group_by(Species) %>%
+  summarise(Avg.Sepal.Length = mean(Sepal.Length),
+            Avg.Sepal.Width = mean(Sepal.Width),
+            Sample.Size = n())
+
+print(iris6)
+```
+
+
+
+#### Question 8. Use piping to create irisFinal in one pipeline
+```{r}
+irisFinal <- iris %>%
+  filter(Species %in% c("virginica", "versicolor"),
+         Sepal.Length > 6,
+         Sepal.Width > 2.5) %>%
+  select(Species, Sepal.Length, Sepal.Width) %>%
+  arrange(desc(Sepal.Length)) %>%
+  mutate(Sepal.Area = Sepal.Length * Sepal.Width)
+
+head(irisFinal)
+```
+
+
+
+#### Question 9. Create a longer data frame with columns: Species, Measure, Value
+```{r}
+iris_long <- iris %>%
+  pivot_longer(cols = -Species, names_to = "Measure", values_to = "Value")
+
+print(iris_long)
+```
+
