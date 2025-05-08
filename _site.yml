@@ -9,11 +9,11 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
-    - text: "HomeWorks"
+    - text: "Home Works"
       href: HomeWorks.html
 output:
   html_document:
-    theme: flatly
+    theme: tango
     highlight: tango
 ---
 
