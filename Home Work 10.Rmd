@@ -1,0 +1,16 @@
+---
+title: "Home Work 10 - Advanced ggplotting"
+author: "Vincent Tamakloe"
+date: "2025-05-08"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+
+
+

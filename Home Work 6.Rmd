@@ -1,5 +1,5 @@
 ---
-title: "HomeWork_6"
+title: "Home Work 6 - Creating Fake Data Sets To Explore Hypotheses"
 author: "Vincent Tamakloe"
 date: "2025-02-19"
 output: html_document

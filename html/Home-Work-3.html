@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Vincent Tamakloe" />
 
+<meta name="date" content="2025-01-29" />
 
-<title>Home Works</title>
+<title>Home Work 3 - Regular Expression Puzzles</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -251,25 +253,119 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Home Works</h1>
+<h1 class="title toc-ignore">Home Work 3 - Regular Expression
+Puzzles</h1>
+<h4 class="author">Vincent Tamakloe</h4>
+<h4 class="date">2025-01-29</h4>
 
 </div>
 
 
-<p><a href="HomeWork_3.html">HomeWork 3 - Regular Expression
-Puzzles</a></p>
-<p><a href="HomeWork_4.html">HomeWork 4 - Atomic Vectors</a></p>
-<p><a href="HomeWork_5.html">HomeWork 5 - Matrices, Lists, and Data
-Frames</a></p>
-<p><a href="HomeWork_6.html">HomeWork 6 - Creating Fake Data Sets To
-Explore Hypotheses</a></p>
-<p><a href="HomeWork_7.html">HomeWork 7 - Data manipulations using the
-dplyr package</a></p>
-<p><a href="HomeWork_8.html">HomeWork 8 - Simulating and Fitting Data
-Distributions</a></p>
-<p><a href="HomeWork_9.html">HomeWork 9 - Strategic Coding
-Practices</a></p>
-<p><a href="HomeWork_10.html">HomeWork 10 - Advanced ggplotting</a></p>
+<div id="regular-expression-puzzles" class="section level3">
+<h3>Regular expression Puzzles</h3>
+<div id="question-1" class="section level4">
+<h4><strong>Question 1</strong></h4>
+<pre><code>Find: &quot;\s* \s&quot; 
+
+replace: &quot;,&quot;</code></pre>
+<p><strong>Explanation:</strong> My goal for the regex in this question
+was to condense the columns froma dataframe into csv format by locating
+all the white spaces within the text and then condensing them by
+separating them with a comma.</p>
+</div>
+</div>
+<div id="question-2" class="section level3">
+<h3><strong>Question 2</strong></h3>
+<pre><code>Find: &quot;(\w+), (\w+), ((.+)$)&quot; 
+
+replace: &quot;\2 \1 \((\3)\)&quot;</code></pre>
+<p><strong>Explanation:</strong> In this case, my regex captures three
+groups: two words using the expression “(+)” and the remainder of the
+line using “((.+)$)”. The replacement rearranges these groups and then
+adds parentheses around the third group.</p>
+</div>
+<div id="question-3" class="section level3">
+<h3><strong>Question 3</strong></h3>
+<pre><code>Find: &quot;(\d{4})&quot; 
+
+replace: &quot;\n(\1)&quot;</code></pre>
+<p><strong>Explanation:</strong> In my regex, I search for each match of
+4 consecutive digits, and then replace that sequence with a newline,
+followed by the 4 digits enclosed in parentheses.</p>
+</div>
+<div id="question-4" class="section level3">
+<h3><strong>Question 4</strong></h3>
+<pre><code>Find: &quot;(\d{4})\s+(.*?)(\.mp3)&quot; 
+
+replace: &quot;\2_(\1\3)&quot;</code></pre>
+<p><strong>Explanation:</strong> In my regex, I searched for and removed
+the leading 4-digit characters and whitespace from the filename using
+the the expression “()+(.*?)(.mp3)“, I then keep the song title at the
+front and add the 4-digit number to the end of the filename before .mp3
+using the expression \2_(\1\3)” in the replace section.</p>
+</div>
+<div id="question-5" class="section level3">
+<h3><strong>Question 5</strong></h3>
+<pre><code>Find: &quot;(\w)(?:\w*),(\w+),(\d+(?:\.\d+)?),(\d+)&quot; 
+
+replace: &quot;\1_\2,\4&quot;</code></pre>
+<p><strong>Explanation:</strong> My regex for the find is designed to
+match lines with four comma-separated fields, where the first field is a
+word, the second field is a word, the third is a number (which has a
+decimal), and the fourth is an integer. I then replace the remove all
+the letters of the first word leaving only the first letters and an
+underscore separating both words. I also take out the number with a
+decimal.</p>
+</div>
+<div id="question-6" class="section level3">
+<h3><strong>Question 6</strong></h3>
+<pre><code>Find: &quot;(\w)(?:\w*),(\w{4})\w*,\d+(?:\.\d+)?,(\d+)&quot;  
+
+replace: &quot;\1_\2,\3&quot;</code></pre>
+<p><strong>Explanation:</strong> My regex extracts the first letter of
+the first word, the first four letters of the second word, and the last
+numeric value from each line using the expression:“()(?:),(),(?:.)?,()”.
+I then insert an underscore infront of the first extracted ltter and
+then drop the numbers with the decimals.</p>
+</div>
+<div id="question-7" class="section level3">
+<h3><strong>Question 7</strong></h3>
+<pre><code>Find: &quot;(\w{3})\w*,(\w{3})\w*,\d+(?:\.\d+)?,(\d+)&quot; 
+
+replace: &quot;\1\2,\4,\3&quot;</code></pre>
+<p><strong>Explanation:</strong> My regex first extracts the first three
+letters of the genus and species names using the expressions “(())” and
+then extracts both numeric values (decimal and non-decimal). I then do
+the swaps of their order using the expression “\1\2,\4,\3”.</p>
+</div>
+<div id="question-8" class="section level3">
+<h3><strong>Question 8</strong></h3>
+<div id="data-curation-using-regex" class="section level4">
+<h4>Data Curation Using REGEX</h4>
+<div id="the-pathogen_binary-column" class="section level5">
+<h5>The pathogen_binary Column</h5>
+<p>In the “pathogen_binary” column, I observe a lot of NAs instead of
+the regular binary inputs (i.e. 0s and 1s). So I decided to replace the
+NAs with 0s by using the regex: “ to search and then replaced them with
+0s.</p>
+</div>
+<div id="the-bombus-spp-and-host_spp-columns" class="section level5">
+<h5>The <em>Bombus</em> spp and Host_spp Columns</h5>
+<p>I realized several irregularities in the naming convention of the
+species. There were several additional characters added to the names of
+the species. I decided to correct them by searching through the columns
+to identify all characters that are not spaces, single characters, or
+line breaks. And then removed the underscores since they are not special
+characters using the regex: “[^\w\s\r\n]” and the finding all
+underscores and then replacing them with nothing.</p>
+</div>
+<div id="the-bee_caste-column" class="section level5">
+<h5>The bee_caste column</h5>
+<p>Here the I realized that drones are referred to as “male”. I searched
+them with the term “male” and then replaced them with “drone”.</p>
+</div>
+</div>
+</div>
 
 
 

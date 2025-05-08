@@ -1,0 +1,15 @@
+---
+title: "Home Work 9 - Strategic Coding Practices "
+author: "Vincent Tamakloe"
+date: "2025-05-08"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+
+

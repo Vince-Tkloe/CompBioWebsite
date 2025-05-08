@@ -1,5 +1,5 @@
 ---
-title: "HomeWork_8"
+title: "Home Work 7 - Data manipulations using the dplyr package"
 author: "Vincent Tamakloe"
 date: "2025-02-27"
 output: html_document
