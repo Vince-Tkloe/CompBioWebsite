@@ -9,8 +9,130 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Package Installation
+```{r install-packages, eval=FALSE}
+install.packages(c(
+  "tidyverse", "ggthemes", "ggbeeswarm", "ggridges",
+  "treemapify", "waffle", "patchwork"
+))
+```
+
+# Loading Packages
+```{r}
+library(tidyverse)
+library(ggthemes)
+library(ggridges)
+library(treemapify)
+library(waffle)
+library(patchwork)
+```
+
+# Load Data from GitHub
+```{r}
+founder <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-18/founder_crops.csv")
+
+glimpse(founder)
+```
+
+# 1. Ridgeline Plot – Age Distribution of Plant Categories
+
+```{r}
+founder_ridge <- founder %>%
+  filter(!is.na(age_start), !is.na(category))
+
+p1 <- ggplot(founder_ridge, aes(x = age_start, y = category, fill = category)) +
+  geom_density_ridges(scale = 0.9, alpha = 0.8, color = "white", rel_min_height = 0.01) +
+  theme_minimal(base_size = 14) +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(size = 16, face = "bold"),
+    axis.text.y = element_text(face = "bold")
+  ) +
+  labs(
+    title = "Age Distribution of Plant Remains by Category",
+    x = "Age Start (cal. years BP)",
+    y = "Plant Category"
+  )
+
+p1
+ggsave("plot1_ridgeline.png", plot = p1, width = 10, height = 6, dpi = 300)
+```
 
 
+# 2.  Histogram – Distribution of Plant Remains Over Time by Category
+```{r}
+p2 <- ggplot(founder, aes(x = age_start, weight = n, fill = category)) +
+  geom_histogram(binwidth = 500, alpha = 0.8, color = "white") +
+  facet_wrap(~ category, scales = "free_y") +
+  theme_minimal(base_size = 8) +
+  theme(
+    axis.text.x = element_text(angle = 0, hjust = 1)
+  ) +
+  labs(
+    title = "Distribution of Plant Remains Over Time by Category",
+    x = "Age Start (cal. years BP)",
+    y = "Total Plant Remains"
+  )
 
+p2
+ggsave("plot2_histogram.png", plot = p2, width = 10, height = 6, dpi = 300)
+```
 
+# 3. Treemap – Top 10 Most Common Plant Families
+```{r}
+top_families <- founder %>%
+  filter(!is.na(family)) %>%
+  count(family, sort = TRUE) %>%
+  top_n(10, n)
 
+p3 <- ggplot(top_families, aes(area = n, fill = family, label = family)) +
+  geom_treemap() +
+  geom_treemap_text(colour = "white", place = "centre", grow = TRUE) +
+  theme_void() +
+  labs(title = "Top 10 Most Common Plant Families")
+
+p3
+ggsave("plot3_treemap.png", plot = p3, width = 8, height = 5, dpi = 300)
+
+```
+
+# 4. Waffle Plot – Proportion of Plant Categories
+```{r}
+category_counts <- founder %>%
+  filter(!is.na(category)) %>%
+  count(category) %>%
+  mutate(pct = round(n / sum(n) * 100))
+
+parts <- category_counts$pct
+names(parts) <- category_counts$category
+
+p4 <- waffle(parts, rows = 5,
+             colors = c("#1b9e77", "#d95f02", "#7570b3", "#e7298a"),
+             title = "Proportion of Plant Categories",
+             legend_pos = "bottom")
+
+p4
+ggsave("plot4_waffle.png", plot = p4, width = 8, height = 5, dpi = 300)
+
+```
+
+# 5. Exporting All Plots in a Combined Figure (Optional)
+```{r}
+
+# Plot 1: Ridgeline
+p1
+ggsave("plot1_ridgeline.png", plot = p1, width = 10, height = 6, dpi = 300)
+
+# Plot 2: Histogram (faceted)
+p2
+ggsave("plot2_histogram.png", plot = p2, width = 12, height = 9, dpi = 300)
+
+# Plot 3: Treemap
+p3
+ggsave("plot3_treemap.png", plot = p3, width = 10, height = 6, dpi = 300)
+
+# Plot 4: Waffle
+p4
+ggsave("plot4_waffle.png", plot = p4, width = 8, height = 6, dpi = 300)
+
+``` 
