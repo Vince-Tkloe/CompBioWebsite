@@ -3,18 +3,18 @@ title: "Home Works"
 output: html_document
 ---
 
-[HomeWork 3 - Regular Expression Puzzles](HomeWork_3.html)
+[HomeWork 3 - Regular Expression Puzzles](Home-Work-3.html)
 
-[HomeWork 4 - Atomic Vectors](HomeWork_4.html)
+[HomeWork 4 - Atomic Vectors](Home-Work-4.html)
 
-[HomeWork 5 - Matrices, Lists, and Data Frames](HomeWork_5.html)
+[HomeWork 5 - Matrices, Lists, and Data Frames](Home-Work-5.html)
 
-[HomeWork 6 - Creating Fake Data Sets To Explore Hypotheses](HomeWork_6.html)
+[HomeWork 6 - Creating Fake Data Sets To Explore Hypotheses](Home-Work-6.html)
 
-[HomeWork 7 - Data manipulations using the dplyr package](HomeWork_7.html)
+[HomeWork 7 - Data manipulations using the dplyr package](Home-Work-7.html)
 
-[HomeWork 8 - Simulating and Fitting Data Distributions](HomeWork_8.html)
+[HomeWork 8 - Simulating and Fitting Data Distributions](Home-Work-8.html)
 
-[HomeWork 9 - Strategic Coding Practices](HomeWork_9.html)
+[HomeWork 9 - Strategic Coding Practices](Home-Work-9.html)
 
-[HomeWork 10 - Advanced ggplotting](HomeWork_10.html)
+[HomeWork 10 - Advanced ggplotting](Home-Work-10.html)
