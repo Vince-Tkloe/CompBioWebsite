@@ -1,23 +1,23 @@
 ---
 title: "Home Work 10 - Advanced ggplotting"
 author: "Vincent Tamakloe"
-date: "2025-05-08"
-output: html_document
+date: "2025-05-07"
+output: "html_document"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Package Installation
-```{r install-packages, eval=FALSE}
+#### Package Installation
+```{r install-packages, eval = FALSE}
 install.packages(c(
   "tidyverse", "ggthemes", "ggbeeswarm", "ggridges",
-  "treemapify", "waffle", "patchwork"
+  "treemapify", "waffle", "patchwork", "cowplot"
 ))
 ```
 
-# Loading Packages
+#### Loading Packages
 ```{r}
 library(tidyverse)
 library(ggthemes)
@@ -25,17 +25,17 @@ library(ggridges)
 library(treemapify)
 library(waffle)
 library(patchwork)
+library(cowplot)
 ```
 
-# Load Data from GitHub
+#### Load Data from GitHub
 ```{r}
 founder <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-18/founder_crops.csv")
 
 glimpse(founder)
 ```
 
-# 1. Ridgeline Plot – Age Distribution of Plant Categories
-
+#### 1. Ridgeline Plot – Age Distribution of Plant Categories
 ```{r}
 founder_ridge <- founder %>%
   filter(!is.na(age_start), !is.na(category))
@@ -58,8 +58,7 @@ p1
 ggsave("plot1_ridgeline.png", plot = p1, width = 10, height = 6, dpi = 300)
 ```
 
-
-# 2.  Histogram – Distribution of Plant Remains Over Time by Category
+#### 2.  Histogram – Distribution of Plant Remains Over Time by Category
 ```{r}
 p2 <- ggplot(founder, aes(x = age_start, weight = n, fill = category)) +
   geom_histogram(binwidth = 500, alpha = 0.8, color = "white") +
@@ -78,7 +77,7 @@ p2
 ggsave("plot2_histogram.png", plot = p2, width = 10, height = 6, dpi = 300)
 ```
 
-# 3. Treemap – Top 10 Most Common Plant Families
+#### 3. Treemap – Top 10 Most Common Plant Families
 ```{r}
 top_families <- founder %>%
   filter(!is.na(family)) %>%
@@ -93,10 +92,9 @@ p3 <- ggplot(top_families, aes(area = n, fill = family, label = family)) +
 
 p3
 ggsave("plot3_treemap.png", plot = p3, width = 8, height = 5, dpi = 300)
-
 ```
 
-# 4. Waffle Plot – Proportion of Plant Categories
+#### 4. Waffle Plot – Proportion of Plant Categories
 ```{r}
 category_counts <- founder %>%
   filter(!is.na(category)) %>%
@@ -116,7 +114,7 @@ ggsave("plot4_waffle.png", plot = p4, width = 8, height = 5, dpi = 300)
 
 ```
 
-# 5. Exporting All Plots in a Combined Figure (Optional)
+#### 5. Exporting All Plots in a Combined Figure (Optional)
 ```{r}
 
 # Plot 1: Ridgeline

@@ -2,31 +2,31 @@
 title: "Home Work 6 - Creating Fake Data Sets To Explore Hypotheses"
 author: "Vincent Tamakloe"
 date: "2025-02-19"
-output: html_document
+output: "html_document"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Generating Simulated Data Sets To Explore Hypotheses
+#### Generating Simulated Data Sets To Explore Hypotheses
 
-### Introduction
-For this assignment, I will simulate a dataset based on an experimental hypothesis related to insect pheromone communication in agricultural pest management. Specifically, I will explore how different pheromone concentrations affect swede midge (*Contarinia nasturtii*) mating behavior. I assume that mating frequency follows a normal distribution across treatment groups.
+##### Introduction
+In this assignment, I will simulate a dataset to explore an experimental hypothesis related to insect pheromone communication in pest management. Specifically, I will investigate how varying pheromone concentrations affect mating behavior in the swede midge (*Contarinia nasturtii*), assuming that mating frequency is normally distributed across treatment groups.
 
-### Hypothesis
-I hypothesize that increased pheromone concentration leads to a significant reduction in mating frequency. To test this, I will simulate four treatment groups, including a control:  
--*Control group*: Expected baseline mating frequency  
--*Low pheromone*: Expected high mating frequency  
--*Medium pheromone*: Intermediate mating frequency  
--*High pheromone*: Low mating frequency  
+##### Hypothesis
+I hypothesize that increasing pheromone concentration will reduce mating frequency. I simulate four treatment groups:  
+-*Control group*: baseline mating frequency  
+-*Low pheromone*: slightly reduced frequency  
+-*Medium pheromone*: moderate reduction 
+-*High pheromone*: strong reduction 
 
 Assumed parameters:  
 - *Sample size per group* = 30  
 - *Means:* *Control* = 20, *Low* = 15, *Medium* = 10, *High* = 5  
 - *Standard deviation*: 3 for all treatment groups  
 
-### Data Simulation
+##### Data Simulation
 ```{r}
 set.seed(123)  # Ensure reproducibility
 
@@ -50,7 +50,7 @@ data <- data.frame(
 head(data)
 ```
 
-### Data Visualization
+##### Data Visualization
 ```{r}
 library(ggplot2)
 
@@ -62,14 +62,16 @@ ggplot(data, aes(x = Treatment, y = MatingFrequency, fill = Treatment)) +
        y = "Mating Frequency")
 ```
 
-### ANOVA Analysis
+##### ANOVA Analysis
 ```{r}
 # Perform ANOVA to test for significant differences
 anova_model <- aov(MatingFrequency ~ Treatment, data = data)
 summary(anova_model)
+
+TukeyHSD(anova_model)  # For pairwise comparisons
 ```
 
-### Sample Size Effects
+##### Sample Size Effects
 ```{r}
 # Function to test different sample sizes
 test_sample_sizes <- function(sample_sizes) {
@@ -102,9 +104,21 @@ sample_size_results <- test_sample_sizes(sample_sizes)
 print(sample_size_results)
 ```
 
-### Conclusion
-This study highlights the impact of pheromone concentration on swede midge mating behavior and the role of sample size in detecting statistically significant differences. The results demonstrate that higher pheromone concentrations reduce mating frequency, supporting the hypothesis. 
 
-Additionally, the analysis reveals how sample size affects statistical power. Smaller sample sizes lead to higher variability in results, making it difficult to detect significant differences, while larger sample sizes improve reliability and consistency. Future studies could explore alternative statistical models, such as negative binomial regression, to account for potential overdispersion in count data. 
+##### Visualize the p_value ~ SampleSize relationship:
+```{r}
+ggplot(sample_size_results, aes(x = SampleSize, y = p_value)) +
+  geom_line() +
+  geom_point() +
+  geom_hline(yintercept = 0.05, linetype = "dashed", color = "red") +
+  theme_minimal() +
+  labs(title = "Effect of Sample Size on Statistical Significance",
+       y = "ANOVA p-value",
+       x = "Sample Size per Group")
+```
 
-Overall, this simulation provides valuable insights into experimental design and the importance of robust statistical analysis in ecological research.
+
+##### Conclusion
+This simulation shows that increasing pheromone concentrations reduce mating frequency in swede midge, supporting the hypothesis. It also illustrates the importance of sample size: smaller samples increase variability and reduce statistical power, while larger samples yield more consistent results. Future studies could explore alternative statistical models, such as negative binomial regression, to account for overdispersion in count data.
+
+Overall, the exercise reinforces key concepts in experimental design and the role of statistical rigor in ecological research.

@@ -1,6 +1,6 @@
 ---
 name: "Vincent Tamakloe"
-output_dir: docs
+output_dir: "docs"
 navbar:
   title: "Tamakloe Website"
   left:
@@ -10,15 +10,16 @@ navbar:
       href: about.html
     - text: "Home Works"
       href: HomeWorks.html
-      
 output:
   html_document:
     theme: tango 
     highlight: tango 
 ---
 
+
 **Welcome to My Website!**
 
-Hi there! 
+Hi there!
 
-This website is still under construction, but I’m excited to share my research journey, insights, and updates as I go. So sit back, relax, and enjoy the ride! Stay tuned for new content and feel free to check back regularly as the site evolves.
+This website is still under construction, but I’m excited to share my research journey, insights, and updates as I go. So sit back, relax, and enjoy the ride! Stay tuned for new content and feel free to check back regularly as the site evolves. 
+

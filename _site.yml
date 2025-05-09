@@ -1,7 +1,7 @@
 ---
 title: "CompBioWebsite"
 name: "Vincent Tamakloe"
-output_dir: html
+output_dir: "docs"
 navbar:
   title: "Tamakloe Website"
   left:
@@ -9,11 +9,12 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
-    - text: "Home Works"
+    - text: "Homeworks"
       href: HomeWorks.html
 output:
   html_document:
-    theme: tango
-    highlight: tango
+    theme: "tango"
+    highlight: "tango"
+    toc: true
+    toc_depth: 2
 ---
-

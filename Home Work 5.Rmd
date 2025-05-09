@@ -2,122 +2,121 @@
 title: "Home Work 5 - Matrices, Lists, and Data Frames"
 author: "Vincent Tamakloe"
 date: "2025-02-12"
-output: html_document
+output: "html_document"
 ---
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Task 1: Matrix Operations
+#### Task 1: Matrix Operations
 
-### Assign a Random Integer for the Matrix
+##### a. Generate matrix dimensions
 ```{r}
 n_dims <- sample(3:10, size=1)
 n_dims
 ```
 
-### Generate a Randomized Matrix
+##### b. Create randomized square matrix
 ```{r}
-# Create a sequence from 1 to n_dims^2
-vector <- seq(1, n_dims^2)
-# Shuffle the sequence to randomize the values
-vector <- sample(vector)
-# Convert the vector into a square matrix
-matrix1 <- matrix(vector, nrow=n_dims)
+vector <- sample(seq(1, n_dims^2))
+matrix1 <- matrix(vector, nrow = n_dims)
 print(matrix1)
 ```
 
-### Apply a Matrix Transposition
+##### c. Transpose matrix
 ```{r}
-# Transpose the matrix so that rows become columns and vice versa
 transposed_matrix <- t(matrix1)
 print(transposed_matrix)
 ```
 
-### Compute Basic Statistics on Specific Rows
+##### d. Compute Basic Statistics on Specific Rows
 ```{r}
-# Find the mean and sum for the first row
-first_row_mean <- mean(matrix1[1,])
-first_row_sum <- sum(matrix1[1,])
-# Find the mean and sum for the last row
-last_row_mean <- mean(matrix1[n_dims,])
-last_row_sum <- sum(matrix1[n_dims,])
-
+first_row_mean <- mean(matrix1[1, ])
+first_row_sum <- sum(matrix1[1, ])
+last_row_mean <- mean(matrix1[n_dims, ])
+last_row_sum <- sum(matrix1[n_dims, ])
 list(first_row_mean, first_row_sum, last_row_mean, last_row_sum)
 ```
 
-### Perform Eigenvalue Analysis
+##### e. Perform Eigenvalue Analysis
 ```{r}
-# Compute the eigenvalues and eigenvectors of the matrix
 matrix_eigen <- eigen(matrix1)
 print(matrix_eigen)
 ```
 
-### Verify Data Types of Eigenvalues and Eigenvectors
+##### f. Check Types of Eigenvalues and Eigenvectors
 ```{r}
-# Check the data types of eigenvalues and eigenvectors
 typeof(matrix_eigen$values)
 typeof(matrix_eigen$vectors)
 ```
 
-## Task 2: Creating and Manipulating Lists
 
-### Build a List Containing Different Data Types
+#### Task 2: Creating and Manipulating Lists
+
+##### a. Build a List Containing Different Data Types
 ```{r}
 # Create a 4x4 matrix with random uniform values
 my_matrix <- matrix(runif(16), nrow=4)
+
 # Generate a logical vector of TRUE/FALSE values
-my_logical <- (runif(100) > .8)
+my_logical <- (runif(100) > 0.8)
+
 # Generate a randomized sequence of lowercase letters
 my_letters <- sample(letters)
 ```
 
-### Extract and Store Specific Elements in a New List
+##### b. Extract and Store Specific Elements into a New List
 ```{r}
-# Create a new list extracting specific values from each component
+# Combine the objects into one list
 list1 <- list(my_matrix, my_logical, my_letters)
-new_list <- list(my_matrix[2,2], my_logical[2], my_letters[2])
+
+# Extract the second element from each and store in a new list
+new_list <- list(my_matrix[2, 2], my_logical[2], my_letters[2])
 ```
 
-### Check Data Types of Extracted Elements
+##### c. Check Data Types of Extracted Elements
 ```{r}
-# Verify the type of each extracted element
-typeof(new_list[[1]])
-typeof(new_list[[2]])
-typeof(new_list[[3]])
+# Inspect the type of each item in new_list
+typeof(new_list[[1]])  # numeric
+typeof(new_list[[2]])  # logical
+typeof(new_list[[3]])  # character
 ```
 
-### Merge Elements into a Single Vector
+##### d. Merge Elements into a Single Vector
 ```{r}
-# Combine extracted elements into a single atomic vector
+# Combine all extracted values into one atomic vector
 combined_elements_vector <- c(new_list[[1]], new_list[[2]], new_list[[3]])
+
+# View the merged vector and its type
 print(combined_elements_vector)
-# Determine the data type of the combined vector
 typeof(combined_elements_vector)
 ```
 
-## Task 3: Data Frames and Handling Missing Data
 
-### Construct a Data Frame
+#### Task 3: Data Frames and Handling Missing Data
+
+##### a. Construct Data Frame
 ```{r}
-# Create a data frame with two columns
-# First column: Random uniform values between 0 and 10
-# Second column: Randomly ordered capital letters
+# Create a data frame with two columns:
+# - Random uniform values between 0 and 10
+# - Randomly ordered capital letters
 dataframe <- data.frame(
-  my_unis = runif(26, min=0, max=10), 
+  my_unis = runif(26, min = 0, max = 10),
   my_letters = sample(LETTERS)
 )
+
 print(dataframe)
 ```
 
-### Introduce Missing Values
+##### b. Introduce Missing Values
 ```{r}
-# Replace values in four randomly chosen rows with NA
-dataframe[sample(1:26, size=4), 1] <- NA
+# Replace four values in the numeric column with NA
+dataframe[sample(1:26, size = 4), 1] <- NA
 ```
 
-### Identify Positions of Missing Data
+##### b. Identify Positions of Missing Data
 ```{r}
 # Locate the rows where NA values appear
 which(is.na(dataframe$my_unis))
@@ -125,13 +124,13 @@ which(is.na(dataframe$my_unis))
 
 ### Reorder Data by Alphabetical Order
 ```{r}
-# Arrange data based on the alphabetical order of the letter column
-dataframe <- dataframe[order(dataframe$my_letters),]
+# Sort the data frame alphabetically by the letter column
+dataframe <- dataframe[order(dataframe$my_letters), ]
 print(dataframe)
 ```
 
 ### Compute the Mean of the Numeric Column
 ```{r}
-# Calculate the mean of the numeric column, ignoring NA values
-mean(dataframe$my_unis, na.rm=TRUE)
+# Calculate the mean of the numeric column, excluding NAs
+mean(dataframe$my_unis, na.rm = TRUE)
 ```

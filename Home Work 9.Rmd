@@ -1,15 +1,11 @@
 ---
-title: "Home Work 9 - Strategic Coding Practices "
+title: "Home Work 9 - Strategic Coding Practices"
 author: "Vincent Tamakloe"
-date: "2025-05-08"
+date: "2025-04-30"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-
-
-
 

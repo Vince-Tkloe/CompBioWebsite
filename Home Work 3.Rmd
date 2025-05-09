@@ -2,90 +2,92 @@
 title: "Home Work 3 - Regular Expression Puzzles"
 author: "Vincent Tamakloe"
 date: "2025-01-29"
-output: html_document
+output: "html_document"
 ---
 
+
 ### Regular expression Puzzles
+
 
 #### **Question 1**
 ```
 Find: "\s* \s" 
 
-replace: ","
+Replace: ","
 ```
 
-**Explanation:** My goal for the regex in this question was to condense the columns froma dataframe into csv format by locating all the white spaces within the text and then condensing them by separating them with a comma.
+**Explanation:** The goal of this regex is to convert whitespace-separated text into CSV format. It finds one or more spaces before and after another space and replaces them with a comma.
 
 
-### **Question 2**
+#### **Question 2**
 ```
 Find: "(\w+), (\w+), ((.+)$)" 
 
-replace: "\2 \1 \((\3)\)"
+Replace: "\2 \1 (\3)"
 ```
 
-**Explanation:** In this case, my regex captures three groups: two words using the expression "(\w+)" and the remainder of the line using "((.+)$)". The replacement rearranges these groups and then adds parentheses around the third group.
+**Explanation:** This regex captures three groups: two words and the remaining line. The replacement reorders them and wraps the third group in parentheses.
 
 
-### **Question 3**
+#### **Question 3**
 ```
 Find: "(\d{4})" 
 
-replace: "\n(\1)"
+Replace: "\n(\1)"
 ```
 
-**Explanation:** In my regex, I search for each match of 4 consecutive digits, and then replace that sequence with a newline, followed by the 4 digits enclosed in parentheses.
+**Explanation:** This expression locates any sequence of four digits and replaces it with the same digits on a new line, enclosed in parentheses.
 
 
-### **Question 4**
+#### **Question 4**
 ```
 Find: "(\d{4})\s+(.*?)(\.mp3)" 
 
-replace: "\2_(\1\3)"
+Replace: "\2_(\1\3)"
 ```
 
-**Explanation:** In my regex, I searched for and removed the leading 4-digit characters and whitespace from the filename using the the expression "(\d{4})\s+(.*?)(\.mp3)", I then keep the song title at the front and add the 4-digit number to the end of the filename before .mp3 using the expression \2_(\1\3)" in the replace section.
+**Explanation:** This regex removes a 4-digit prefix and any following whitespace from a filename. It then moves the number to the end and renames the file with the pattern: title_(year.mp3).
 
 
-### **Question 5**
+#### **Question 5**
 ```
 Find: "(\w)(?:\w*),(\w+),(\d+(?:\.\d+)?),(\d+)" 
 
-replace: "\1_\2,\4"
+Replace: "\1_\2,\4"
 ```
 
 **Explanation:**
-My regex for the find is designed to match lines with four comma-separated fields, where the first field is a word, the second field is a word, the third is a number (which has a decimal), and the fourth is an integer. I then replace the remove all the letters of the first word leaving only the first letters and an underscore separating both words. I also take out the number with a decimal.
+This regex targets rows with four comma-separated fields: two words, a decimal number, and an integer. It abbreviates the first word to its first letter, appends an underscore, retains the second word and last number, and drops the decimal value.
 
 
-### **Question 6**
+#### **Question 6**
 ```
 Find: "(\w)(?:\w*),(\w{4})\w*,\d+(?:\.\d+)?,(\d+)"  
 
-replace: "\1_\2,\3"
+Replace: "\1_\2,\3"
 ```
 
-**Explanation:** My regex extracts the first letter of the first word, the first four letters of the second word, and the last numeric value from each line using the expression:"(\w)(?:\w*),(\w{4})\w*,\d+(?:\.\d+)?,(\d+)". I then insert an underscore infront of the first extracted ltter and then drop the numbers with the decimals.
+**Explanation:** This pattern captures the first letter of the first word, the first four letters of the second word, and the last integer. It formats the result as: firstLetter_fourLetters,lastNumber.
 
 
-### **Question 7**
+#### **Question 7**
 ```
 Find: "(\w{3})\w*,(\w{3})\w*,\d+(?:\.\d+)?,(\d+)" 
 
-replace: "\1\2,\4,\3"
+Replace: "\1\2,\3"
 ```
 
-**Explanation:** My regex first extracts the first three letters of  the genus and species names using the expressions "((\w{3})\w*)" and then extracts both numeric values (decimal and non-decimal). I then do the swaps of their order using the expression "\1\2,\4,\3".
+**Explanation:** This regex extracts the first three letters of the genus and species names, followed by the last number in each line. It rearranges the order in the replacement string.
 
 
-### **Question 8**
+#### **Question 8**
 #### Data Curation Using REGEX
 
-##### The pathogen_binary Column
-In the “pathogen_binary” column, I observe a lot of NAs instead of the regular binary inputs (i.e. 0s and 1s). So I decided to replace the NAs with 0s by using the regex: "\bNA\b" to search and then replaced them with 0s. 
+##### a. The pathogen_binary Column
+I observed a number of NA values instead of 0s and 1s. I replaced these with 0 using the regex \bNA\b. 
 
-##### The *Bombus* spp and Host_spp Columns
-I realized several irregularities in the naming convention of the species. There were several additional characters added to the names of the species. I decided to correct them by searching through the columns to identify all characters that are not spaces, single characters, or line breaks. And then removed the underscores since they are not special characters using the regex: "[^\w\s\r\n]" and the finding all underscores and then replacing them with nothing.
+##### b. The *Bombus* spp and Host_spp Columns
+There were inconsistencies in species naming, including special characters and underscores. I used [^\w\s\r\n] to remove unwanted characters, and then removed underscores using a separate regex.
 
-##### The bee_caste column
-Here the I realized that drones are referred to as "male". I searched them with the term "male" and then replaced them with "drone". 
+##### c. The bee_caste Column
+In this column, drones were labeled as "male." I used a regex to search for "male" and replaced it with "drone" for clarity and consistency.

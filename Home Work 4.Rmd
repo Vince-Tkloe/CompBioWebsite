@@ -1,9 +1,10 @@
 ---
 title: "Home Work 4 - Atomic Vectors"
 author: "Vincent Tamakloe"
-date: "2025-02-5"
-output: html_document
+date: "2025-02-05"
+output: "html_document"
 ---
+
 
 #### Question One
 
@@ -11,7 +12,7 @@ output: html_document
 ```{r}
 z <- 1.1 ^ 2.2 ^ 3.3
 
-print(z)
+print(z) 
 ```
 
 
@@ -28,6 +29,8 @@ z <- 3 * 1.1 ^ 3 + 2 * 1.1 ^ 2 + 1
 
 print(z)
 ```
+
+
 
 #### Question Two
 #### A.
@@ -56,38 +59,30 @@ rep(x=c, times=1:5)
 ```
 
 
+
 #### Question Three
 ```{r}
-#let's set seed so our values don't keep changing
 set.seed(10)
 
-#define x and y
 x <- runif(1)
 print(x)
 
 y <- runif(1)
 print(y)
 
-# let's find r
-r <- sqrt(x ^ 2 + y ^ 2)
-
+r <- sqrt(x^2 + y^2)
 print(r)
 
-# let's find theta
-theta <- -asin(y/r)
-
+theta <- -asin(y / r)
 print(theta)
 ```
 
 #### Question four
 #### A.
 ```{r}
-#make queue
 queue <- c("sheep", "fox", "owl", "ant")
-
 print(queue)
 
-#add the serpent
 queue <- c(queue, "serpent")
 print(queue)
 ```
@@ -102,28 +97,24 @@ print(queue)
 ####  C.
 ```{r}
 queue <- c("donkey", queue)
-
 print(queue)
 ```
 
 #### D.
 ```{r}
 queue <- queue[-5]
-
 print(queue)
 ```
 
 #### E.
 ```{r}
 queue <- queue[-3]
-
 print(queue)
 ```
 
 #### F.
 ```{r}
 queue <- c(queue[1], queue[2], "aphid", queue[3])
-
 print(queue)
 ```
 
@@ -134,7 +125,7 @@ which(queue == "aphid")
 
 #### Question 5
 ```{r}
-vec <- seq(1:100)
+vec <- seq(1, 100)
 which(!(vec %% 2 == 0 | vec %% 3 == 0 | vec %% 7 == 0))
 ```
 
