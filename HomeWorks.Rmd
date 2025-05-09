@@ -1,15 +1,22 @@
 ---
-title: "HomeWorks"
+title: "Home Works"
 output: html_document
 ---
 
-Below are links to my completed homeworks for the Computational Biology course:
+Below are links to my completed home works for the Computational Biology course:
 
-- Homework 3 – [Regular Expression Puzzles](Home-Work-3.html)  
-- Homework 4 – [Atomic Vectors](Home-Work-4.html)  
-- Homework 5 – [Matrices, Lists, and Data Frames](Home-Work-5.html)  
-- Homework 6 – [Creating Fake Data Sets To Explore Hypotheses](Home-Work-6.html)  
-- Homework 7 – [Data Manipulations Using the dplyr Package](Home-Work-7.html)  
-- Homework 8 – [Simulating and Fitting Data Distributions](Home-Work-8.html)  
-- Homework 9 – [Strategic Coding Practices](Home-Work-9.html)  
-- Homework 10 – [Advanced ggplotting](Home-Work-10.html)
+- Home Work #3 – [**Regular Expression Puzzles**](Home-Work-3.html) 
+
+- Home Work #4 – [**Atomic Vectors**](Home-Work-4.html)  
+
+- Home Work #5 – [**Matrices, Lists, and Data Frames**](Home-Work-5.html)  
+
+- Home Work #6 – [**Creating Fake Data Sets To Explore Hypotheses**](Home-Work-6.html) 
+
+- Home Work #7 – [**Data Manipulations Using the dplyr Package**](Home-Work-7.html) 
+
+- Home Work #8 – [**Simulating and Fitting Data Distributions**](Home-Work-8.html) 
+
+- Home Work #9 – [**Strategic Coding Practices**](Home-Work-9.html)  
+
+- Home Work #10 – [**Advanced ggplotting**](Home-Work-10.html)
