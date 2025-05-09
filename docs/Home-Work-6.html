@@ -420,27 +420,27 @@ strong reduction</p>
 </div>
 <div id="data-visualization" class="section level5">
 <h5>Data Visualization</h5>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.3.3</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> Treatment, <span class="at">y =</span> MatingFrequency, <span class="at">fill =</span> Treatment)) <span class="sc">+</span></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Effect of Pheromone Concentration on Mating Frequency&quot;</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Pheromone Treatment&quot;</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Mating Frequency&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> Treatment, <span class="at">y =</span> MatingFrequency, <span class="at">fill =</span> Treatment)) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Effect of Pheromone Concentration on Mating Frequency&quot;</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Pheromone Treatment&quot;</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Mating Frequency&quot;</span>)</span></code></pre></div>
 <p><img src="Home-Work-6_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 <div id="anova-analysis" class="section level5">
 <h5>ANOVA Analysis</h5>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Perform ANOVA to test for significant differences</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>anova_model <span class="ot">&lt;-</span> <span class="fu">aov</span>(MatingFrequency <span class="sc">~</span> Treatment, <span class="at">data =</span> data)</span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="fu">summary</span>(anova_model)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Perform ANOVA to test for significant differences</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>anova_model <span class="ot">&lt;-</span> <span class="fu">aov</span>(MatingFrequency <span class="sc">~</span> Treatment, <span class="at">data =</span> data)</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="fu">summary</span>(anova_model)</span></code></pre></div>
 <pre><code>##              Df Sum Sq Mean Sq F value Pr(&gt;F)    
 ## Treatment     3   3894  1298.0   178.1 &lt;2e-16 ***
 ## Residuals   116    845     7.3                   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">TukeyHSD</span>(anova_model)  <span class="co"># For pairwise comparisons</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">TukeyHSD</span>(anova_model)  <span class="co"># For pairwise comparisons</span></span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
@@ -457,35 +457,35 @@ strong reduction</p>
 </div>
 <div id="sample-size-effects" class="section level5">
 <h5>Sample Size Effects</h5>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># Function to test different sample sizes</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>test_sample_sizes <span class="ot">&lt;-</span> <span class="cf">function</span>(sample_sizes) {</span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">SampleSize =</span> <span class="fu">numeric</span>(), <span class="at">p_value =</span> <span class="fu">numeric</span>())</span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  </span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> sample_sizes) {</span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>    new_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>      <span class="at">Treatment =</span> <span class="fu">rep</span>(treatments, <span class="at">each =</span> n),</span>
-<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>      <span class="at">MatingFrequency =</span> <span class="fu">c</span>(</span>
-<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>        <span class="fu">rnorm</span>(n, <span class="at">mean =</span> means[<span class="dv">1</span>], <span class="at">sd =</span> sd),  <span class="co"># Control group</span></span>
-<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>        <span class="fu">rnorm</span>(n, <span class="at">mean =</span> means[<span class="dv">2</span>], <span class="at">sd =</span> sd),  <span class="co"># Low pheromone</span></span>
-<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>        <span class="fu">rnorm</span>(n, <span class="at">mean =</span> means[<span class="dv">3</span>], <span class="at">sd =</span> sd),  <span class="co"># Medium pheromone</span></span>
-<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>        <span class="fu">rnorm</span>(n, <span class="at">mean =</span> means[<span class="dv">4</span>], <span class="at">sd =</span> sd)   <span class="co"># High pheromone</span></span>
-<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>      )</span>
-<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a>    )</span>
-<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a>    </span>
-<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a>    model <span class="ot">&lt;-</span> <span class="fu">aov</span>(MatingFrequency <span class="sc">~</span> Treatment, <span class="at">data =</span> new_data)</span>
-<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a>    p_val <span class="ot">&lt;-</span> <span class="fu">summary</span>(model)[[<span class="dv">1</span>]][[<span class="st">&quot;Pr(&gt;F)&quot;</span>]][<span class="dv">1</span>]</span>
-<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a>    </span>
-<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a>    results <span class="ot">&lt;-</span> <span class="fu">rbind</span>(results, <span class="fu">data.frame</span>(<span class="at">SampleSize =</span> n, <span class="at">p_value =</span> p_val))</span>
-<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a>  }</span>
-<span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a>  </span>
-<span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
-<span id="cb10-23"><a href="#cb10-23" tabindex="-1"></a>}</span>
-<span id="cb10-24"><a href="#cb10-24" tabindex="-1"></a></span>
-<span id="cb10-25"><a href="#cb10-25" tabindex="-1"></a><span class="co"># Test sample sizes from 10 to 100 in increments of 10</span></span>
-<span id="cb10-26"><a href="#cb10-26" tabindex="-1"></a>sample_sizes <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">10</span>)</span>
-<span id="cb10-27"><a href="#cb10-27" tabindex="-1"></a>sample_size_results <span class="ot">&lt;-</span> <span class="fu">test_sample_sizes</span>(sample_sizes)</span>
-<span id="cb10-28"><a href="#cb10-28" tabindex="-1"></a></span>
-<span id="cb10-29"><a href="#cb10-29" tabindex="-1"></a><span class="fu">print</span>(sample_size_results)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Function to test different sample sizes</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>test_sample_sizes <span class="ot">&lt;-</span> <span class="cf">function</span>(sample_sizes) {</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">SampleSize =</span> <span class="fu">numeric</span>(), <span class="at">p_value =</span> <span class="fu">numeric</span>())</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  </span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> sample_sizes) {</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>    new_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>      <span class="at">Treatment =</span> <span class="fu">rep</span>(treatments, <span class="at">each =</span> n),</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>      <span class="at">MatingFrequency =</span> <span class="fu">c</span>(</span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>        <span class="fu">rnorm</span>(n, <span class="at">mean =</span> means[<span class="dv">1</span>], <span class="at">sd =</span> sd),  <span class="co"># Control group</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>        <span class="fu">rnorm</span>(n, <span class="at">mean =</span> means[<span class="dv">2</span>], <span class="at">sd =</span> sd),  <span class="co"># Low pheromone</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>        <span class="fu">rnorm</span>(n, <span class="at">mean =</span> means[<span class="dv">3</span>], <span class="at">sd =</span> sd),  <span class="co"># Medium pheromone</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a>        <span class="fu">rnorm</span>(n, <span class="at">mean =</span> means[<span class="dv">4</span>], <span class="at">sd =</span> sd)   <span class="co"># High pheromone</span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a>      )</span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a>    )</span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a>    </span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a>    model <span class="ot">&lt;-</span> <span class="fu">aov</span>(MatingFrequency <span class="sc">~</span> Treatment, <span class="at">data =</span> new_data)</span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a>    p_val <span class="ot">&lt;-</span> <span class="fu">summary</span>(model)[[<span class="dv">1</span>]][[<span class="st">&quot;Pr(&gt;F)&quot;</span>]][<span class="dv">1</span>]</span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a>    </span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a>    results <span class="ot">&lt;-</span> <span class="fu">rbind</span>(results, <span class="fu">data.frame</span>(<span class="at">SampleSize =</span> n, <span class="at">p_value =</span> p_val))</span>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a>  }</span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a>  </span>
+<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
+<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a>}</span>
+<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="co"># Test sample sizes from 10 to 100 in increments of 10</span></span>
+<span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a>sample_sizes <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">10</span>)</span>
+<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a>sample_size_results <span class="ot">&lt;-</span> <span class="fu">test_sample_sizes</span>(sample_sizes)</span>
+<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a></span>
+<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="fu">print</span>(sample_size_results)</span></code></pre></div>
 <pre><code>##    SampleSize       p_value
 ## 1          10  1.230876e-11
 ## 2          20  6.626228e-27
@@ -501,14 +501,14 @@ strong reduction</p>
 <div id="visualize-the-p_value-samplesize-relationship"
 class="section level5">
 <h5>Visualize the p_value ~ SampleSize relationship:</h5>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">ggplot</span>(sample_size_results, <span class="fu">aes</span>(<span class="at">x =</span> SampleSize, <span class="at">y =</span> p_value)) <span class="sc">+</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.05</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Effect of Sample Size on Statistical Significance&quot;</span>,</span>
-<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;ANOVA p-value&quot;</span>,</span>
-<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Sample Size per Group&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">ggplot</span>(sample_size_results, <span class="fu">aes</span>(<span class="at">x =</span> SampleSize, <span class="at">y =</span> p_value)) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.05</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Effect of Sample Size on Statistical Significance&quot;</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;ANOVA p-value&quot;</span>,</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Sample Size per Group&quot;</span>)</span></code></pre></div>
 <p><img src="Home-Work-6_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <div id="conclusion" class="section level5">

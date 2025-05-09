@@ -368,38 +368,28 @@ Frames</h1>
 <h5>a. Generate matrix dimensions</h5>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>n_dims <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">1</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>n_dims</span></code></pre></div>
-<pre><code>## [1] 9</code></pre>
+<pre><code>## [1] 4</code></pre>
 </div>
 <div id="b.-create-randomized-square-matrix" class="section level5">
 <h5>b. Create randomized square matrix</h5>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>vector <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">1</span>, n_dims<span class="sc">^</span><span class="dv">2</span>))</span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>matrix1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(vector, <span class="at">nrow =</span> n_dims)</span>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">print</span>(matrix1)</span></code></pre></div>
-<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
-##  [1,]   12   46   47   73   71    5   62   69   55
-##  [2,]   34   57   20   56   76   66   63   65   70
-##  [3,]   78   17   26    6   67   68   77   54    3
-##  [4,]   10   74   33   35   41   58   28   72   13
-##  [5,]   16   40   36   52   75   44   27   37   18
-##  [6,]   15   25   43   51   48   38   64   29   80
-##  [7,]   45   14   32   30    2   19   49   79    9
-##  [8,]   39   21   22    8    7   61   11   31   53
-##  [9,]   81   50   59   24   42    4    1   23   60</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]   16    6   11    5
+## [2,]   12   14    9    1
+## [3,]    7    3    2   10
+## [4,]    8   13   15    4</code></pre>
 </div>
 <div id="c.-transpose-matrix" class="section level5">
 <h5>c. Transpose matrix</h5>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>transposed_matrix <span class="ot">&lt;-</span> <span class="fu">t</span>(matrix1)</span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">print</span>(transposed_matrix)</span></code></pre></div>
-<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
-##  [1,]   12   34   78   10   16   15   45   39   81
-##  [2,]   46   57   17   74   40   25   14   21   50
-##  [3,]   47   20   26   33   36   43   32   22   59
-##  [4,]   73   56    6   35   52   51   30    8   24
-##  [5,]   71   76   67   41   75   48    2    7   42
-##  [6,]    5   66   68   58   44   38   19   61    4
-##  [7,]   62   63   77   28   27   64   49   11    1
-##  [8,]   69   65   54   72   37   29   79   31   23
-##  [9,]   55   70    3   13   18   80    9   53   60</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]   16   12    7    8
+## [2,]    6   14    3   13
+## [3,]   11    9    2   15
+## [4,]    5    1   10    4</code></pre>
 </div>
 <div id="d.-compute-basic-statistics-on-specific-rows"
 class="section level5">
@@ -410,16 +400,16 @@ class="section level5">
 <span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>last_row_sum <span class="ot">&lt;-</span> <span class="fu">sum</span>(matrix1[n_dims, ])</span>
 <span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="fu">list</span>(first_row_mean, first_row_sum, last_row_mean, last_row_sum)</span></code></pre></div>
 <pre><code>## [[1]]
-## [1] 48.88889
+## [1] 9.5
 ## 
 ## [[2]]
-## [1] 440
+## [1] 38
 ## 
 ## [[3]]
-## [1] 38.22222
+## [1] 10
 ## 
 ## [[4]]
-## [1] 344</code></pre>
+## [1] 40</code></pre>
 </div>
 <div id="e.-perform-eigenvalue-analysis" class="section level5">
 <h5>e. Perform Eigenvalue Analysis</h5>
@@ -427,41 +417,15 @@ class="section level5">
 <span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">print</span>(matrix_eigen)</span></code></pre></div>
 <pre><code>## eigen() decomposition
 ## $values
-## [1] 363.34795+ 0.00000i  20.95506+56.91054i  20.95506-56.91054i
-## [4] -47.52049+31.83713i -47.52049-31.83713i  36.11459+ 0.00000i
-## [7]  32.53499+10.73559i  32.53499-10.73559i -28.40170+ 0.00000i
+## [1] 33.642719+0.000000i -8.390689+0.000000i  5.373985+3.872704i
+## [4]  5.373985-3.872704i
 ## 
 ## $vectors
-##               [,1]                  [,2]                  [,3]
-##  [1,] 0.3787559+0i  0.2412769+0.1026910i  0.2412769-0.1026910i
-##  [2,] 0.4481283+0i -0.0492793+0.1553773i -0.0492793-0.1553773i
-##  [3,] 0.3395406+0i  0.2821144-0.2093817i  0.2821144+0.2093817i
-##  [4,] 0.3298090+0i  0.0040639+0.3871901i  0.0040639-0.3871901i
-##  [5,] 0.3096266+0i  0.1660572-0.0318922i  0.1660572+0.0318922i
-##  [6,] 0.3422633+0i -0.1222921-0.1951333i -0.1222921+0.1951333i
-##  [7,] 0.2310307+0i  0.2027264+0.2711548i  0.2027264-0.2711548i
-##  [8,] 0.2332625+0i -0.4741851+0.0000000i -0.4741851+0.0000000i
-##  [9,] 0.3329622+0i -0.1091203-0.4453104i -0.1091203+0.4453104i
-##                          [,4]                    [,5]           [,6]
-##  [1,] -0.47230663+0.12089816i -0.47230663-0.12089816i  0.15952511+0i
-##  [2,]  0.19341999+0.17779585i  0.19341999-0.17779585i  0.52997664+0i
-##  [3,]  0.63822763+0.00000000i  0.63822763+0.00000000i -0.69843208+0i
-##  [4,] -0.23423721-0.33105483i -0.23423721+0.33105483i  0.30304419+0i
-##  [5,] -0.07480510+0.01788837i -0.07480510-0.01788837i -0.22048426+0i
-##  [6,] -0.17288528+0.15661416i -0.17288528-0.15661416i -0.17912956+0i
-##  [7,] -0.08009331+0.00952470i -0.08009331-0.00952470i -0.06692381+0i
-##  [8,]  0.20358524-0.04466484i  0.20358524+0.04466484i  0.02345359+0i
-##  [9,] -0.00796074-0.10556757i -0.00796074+0.10556757i  0.16823724+0i
-##                        [,7]                  [,8]          [,9]
-##  [1,]  0.1528374-0.0570726i  0.1528374+0.0570726i  0.5010260+0i
-##  [2,]  0.4745653-0.1029335i  0.4745653+0.1029335i -0.2043304+0i
-##  [3,] -0.6369912+0.0000000i -0.6369912+0.0000000i -0.4379035+0i
-##  [4,]  0.2637215-0.1113096i  0.2637215+0.1113096i  0.6234135+0i
-##  [5,] -0.2550716+0.1790239i -0.2550716-0.1790239i -0.1077262+0i
-##  [6,] -0.1795421+0.0039321i -0.1795421-0.0039321i  0.1877435+0i
-##  [7,]  0.0029902-0.2516490i  0.0029902+0.2516490i -0.1030683+0i
-##  [8,]  0.0539638+0.1246547i  0.0539638-0.1246547i -0.2368854+0i
-##  [9,]  0.1401279+0.1381830i  0.1401279-0.1381830i -0.1150119+0i</code></pre>
+##               [,1]          [,2]                  [,3]                  [,4]
+## [1,] -0.5498159+0i  0.1694461+0i  0.2326025-0.4434339i  0.2326025+0.4434339i
+## [2,] -0.5224357+0i  0.1846883+0i -0.5910992+0.0000000i -0.5910992+0.0000000i
+## [3,] -0.3457559+0i -0.7530067+0i  0.2572282+0.2808099i  0.2572282-0.2808099i
+## [4,] -0.5524638+0i  0.6084070+0i -0.0074529+0.5047654i -0.0074529-0.5047654i</code></pre>
 </div>
 <div id="f.-check-types-of-eigenvalues-and-eigenvectors"
 class="section level5">
@@ -513,7 +477,7 @@ class="section level5">
 <span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a></span>
 <span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a><span class="co"># View the merged vector and its type</span></span>
 <span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a><span class="fu">print</span>(combined_elements_vector)</span></code></pre></div>
-<pre><code>## [1] &quot;0.756193252280354&quot; &quot;FALSE&quot;             &quot;y&quot;</code></pre>
+<pre><code>## [1] &quot;0.239589131204411&quot; &quot;FALSE&quot;             &quot;c&quot;</code></pre>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="fu">typeof</span>(combined_elements_vector)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 </div>
@@ -533,32 +497,32 @@ class="section level4">
 <span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a></span>
 <span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a><span class="fu">print</span>(dataframe)</span></code></pre></div>
 <pre><code>##      my_unis my_letters
-## 1  9.2293131          X
-## 2  7.0410755          R
-## 3  6.0671449          G
-## 4  3.5126411          O
-## 5  9.3143248          T
-## 6  9.3827511          F
-## 7  8.8682514          L
-## 8  2.6091511          Q
-## 9  9.3447397          Z
-## 10 3.8435750          P
-## 11 6.9128549          C
-## 12 1.0663651          M
-## 13 3.7084403          W
-## 14 6.8788372          S
-## 15 1.1703360          E
-## 16 3.2131461          U
-## 17 9.3237255          H
-## 18 0.5800495          I
-## 19 4.9922408          N
-## 20 5.0286448          K
-## 21 1.2035043          Y
-## 22 4.3100486          V
-## 23 0.1907794          D
-## 24 5.7211498          A
-## 25 8.0283670          J
-## 26 9.9545058          B</code></pre>
+## 1  7.6179680          G
+## 2  7.4529740          B
+## 3  7.0782726          Q
+## 4  9.8680824          X
+## 5  4.5163091          L
+## 6  1.1821741          Z
+## 7  2.3863532          H
+## 8  4.7052276          N
+## 9  3.5232307          F
+## 10 3.3857524          C
+## 11 1.2730127          K
+## 12 4.2407386          V
+## 13 4.7331084          S
+## 14 5.2772201          O
+## 15 6.2695361          J
+## 16 8.7602609          P
+## 17 6.7915704          M
+## 18 7.2406401          T
+## 19 1.8184772          R
+## 20 0.7785552          E
+## 21 0.7219740          A
+## 22 0.5406259          Y
+## 23 5.1727341          W
+## 24 8.1405157          I
+## 25 4.4904840          D
+## 26 5.5889489          U</code></pre>
 </div>
 <div id="b.-introduce-missing-values" class="section level5">
 <h5>b. Introduce Missing Values</h5>
@@ -569,7 +533,7 @@ class="section level4">
 <h5>b. Identify Positions of Missing Data</h5>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="co"># Locate the rows where NA values appear</span></span>
 <span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">is.na</span>(dataframe<span class="sc">$</span>my_unis))</span></code></pre></div>
-<pre><code>## [1] 14 16 20 22</code></pre>
+<pre><code>## [1]  5  6 13 21</code></pre>
 </div>
 </div>
 <div id="reorder-data-by-alphabetical-order" class="section level3">
@@ -578,38 +542,38 @@ class="section level4">
 <span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>dataframe <span class="ot">&lt;-</span> dataframe[<span class="fu">order</span>(dataframe<span class="sc">$</span>my_letters), ]</span>
 <span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a><span class="fu">print</span>(dataframe)</span></code></pre></div>
 <pre><code>##      my_unis my_letters
-## 24 5.7211498          A
-## 26 9.9545058          B
-## 11 6.9128549          C
-## 23 0.1907794          D
-## 15 1.1703360          E
-## 6  9.3827511          F
-## 3  6.0671449          G
-## 17 9.3237255          H
-## 18 0.5800495          I
-## 25 8.0283670          J
-## 20        NA          K
-## 7  8.8682514          L
-## 12 1.0663651          M
-## 19 4.9922408          N
-## 4  3.5126411          O
-## 10 3.8435750          P
-## 8  2.6091511          Q
-## 2  7.0410755          R
-## 14        NA          S
-## 5  9.3143248          T
-## 16        NA          U
-## 22        NA          V
-## 13 3.7084403          W
-## 1  9.2293131          X
-## 21 1.2035043          Y
-## 9  9.3447397          Z</code></pre>
+## 21        NA          A
+## 2  7.4529740          B
+## 10 3.3857524          C
+## 25 4.4904840          D
+## 20 0.7785552          E
+## 9  3.5232307          F
+## 1  7.6179680          G
+## 7  2.3863532          H
+## 24 8.1405157          I
+## 15 6.2695361          J
+## 11 1.2730127          K
+## 5         NA          L
+## 17 6.7915704          M
+## 8  4.7052276          N
+## 14 5.2772201          O
+## 16 8.7602609          P
+## 3  7.0782726          Q
+## 19 1.8184772          R
+## 13        NA          S
+## 18 7.2406401          T
+## 26 5.5889489          U
+## 12 4.2407386          V
+## 23 5.1727341          W
+## 4  9.8680824          X
+## 22 0.5406259          Y
+## 6         NA          Z</code></pre>
 </div>
 <div id="compute-the-mean-of-the-numeric-column" class="section level3">
 <h3>Compute the Mean of the Numeric Column</h3>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="co"># Calculate the mean of the numeric column, excluding NAs</span></span>
 <span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a><span class="fu">mean</span>(dataframe<span class="sc">$</span>my_unis, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## [1] 5.548422</code></pre>
+<pre><code>## [1] 5.109145</code></pre>
 </div>
 
 
