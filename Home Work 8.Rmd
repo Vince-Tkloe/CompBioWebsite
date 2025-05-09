@@ -9,11 +9,6 @@ output: "html_document"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-#### Install Package
-```{r}
-install.packages("readxl")
-```
-
 #### Loading libraries
 ```{r}
 library(ggplot2)
